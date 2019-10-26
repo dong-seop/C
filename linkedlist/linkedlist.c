@@ -57,7 +57,7 @@ void InsertNode(list* mylist, int data, int position)
 	node* newNode = CreateNode(data);
 
 	int cnt = 1;
-	if (position == 1)  //첫번째에 node 추가
+	if (position == 1) 
 	{
 		newNode->next = curr;
 		mylist->head = newNode;
