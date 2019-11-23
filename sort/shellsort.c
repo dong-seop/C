@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -25,25 +26,16 @@ int main()
 	int size = 20;
 	srand(time(NULL));
 	int* arr = CreateArr(size, 200);
-	PrintArr(arr, size);
+	PrintArr(arr, size); 
 
-	for (int itv = size / 2; itv > 0; itv /= 2)
+	for (int i = 1; i < size; i++)
 	{
-		if (itv % 2 == 0)	itv++;
-		int keyValue, j, k;
-
-		for (int i = 0; i < itv; i++)
+		int j, key = arr[i];		
+		for (j = i - 1; j >= 0 && arr[j] > key; j--)
 		{
-			for (j = i + itv; j < size; j = j + itv)
-			{
-				keyValue = arr[j];
-				for (k = j - itv; k >= 0 && arr[k] > keyValue; k -= itv)
-				{
-					arr[k + itv] = arr[k];
-				}
-				arr[k + itv] = keyValue;
-			}
+			arr[j + 1] = arr[j];
 		}
+		arr[j + 1] = key;
 	}
 	PrintArr(arr, size);
 }
