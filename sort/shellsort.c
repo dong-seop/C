@@ -29,16 +29,20 @@ int main()
 
 	for (int itv = size / 2; itv > 0; itv /= 2)
 	{
-		int keyValue, j;
 		if (itv % 2 == 0)	itv++;
-		for (int i = itv; i < size; i++)  
+		int keyValue, j, k;
+
+		for (int i = 0; i < itv; i++)
 		{
-			keyValue = arr[i];
-			for (j = i - itv; j >= 0 && arr[j]>keyValue; j -= itv)
+			for (j = i + itv; j < size; j = j + itv)
 			{
-				arr[j + itv] = arr[j];
+				keyValue = arr[j];
+				for (k = j - itv; k >= 0 && arr[k] > keyValue; k -= itv)
+				{
+					arr[k + itv] = arr[k];
+				}
+				arr[k + itv] = keyValue;
 			}
-			arr[j + itv] = keyValue;
 		}
 	}
 	PrintArr(arr, size);
